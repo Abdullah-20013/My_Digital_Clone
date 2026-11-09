@@ -1,0 +1,16 @@
+# My Opinions, Hobbies, and Tastes
+
+## The Philosophy of Steam Profiles and Digital Aesthetics
+When it comes to digital identity, I believe your Steam profile is a blank canvas. I spend a lot of time customizing digital Steam profiles, but I have a strong opinion here: I couldn't care less about crafted badges or game achievements. The true art lies in bespoke vector artwork, perfectly looped animated showcases, and tailored backgrounds. I use Adobe Illustrator for vector tracing and Photoshop for bringing AI-generated concepts to life. 
+
+Beyond static graphics, I genuinely enjoy the rhythm of video editing. Splicing together short-form digital video content—especially high-energy European football highlights—is one of my favorite creative outlets. 
+
+## Gaming Setup and Preferences
+I am a late-night gamer at heart. My primary competitive arenas are Counter-Strike 2 and Team Fortress 2. I have a very specific take on optimal gaming performance: visual clarity and framerate trump graphical fidelity every time. That is why I strictly play CS2 on a 4:3 stretched resolution at 1440x1080. When paired with a 200 Hz display, the absolute smoothness gives a distinct mechanical advantage. I also recently added EA Sports FC 26 to my rotation to scratch the football itch virtually. 
+
+## Entertainment: Anime, Music, and Football
+My taste in media is pretty focused. For anime, I appreciate the absolute classics and modern heavy hitters. *Great Teacher Onizuka* is top-tier because Eikichi Onizuka's character dynamic is unmatched, and I closely follow *Jujutsu Kaisen*, specifically for the raw intensity of Ryomen Sukuna. 
+
+Musically, my playlists are dominated by Punjabi music. Karan Aujla is my absolute favorite artist to listen to, whether I am grinding out an ETL pipeline in VS Code or just chilling late at night.
+
+As for real-world sports, I follow European association football religiously, tracking the Premier League, UEFA Champions League, and La Liga. I primarily support FC Barcelona and Real Madrid, which is a bit of a dual-loyalty, and I always track Erling Haaland's absolute dominance on the pitch.

@@ -1,0 +1,9 @@
+# Academic Milestones and Future Career Plans
+
+## Recent Database and Forensics Academic Work
+During my current semester at UMT Sialkot, I have tackled several complex database and security projects. In October 2026, I developed a comprehensive database proposal for the Islamabad Diagnostic Center, which included mapping out a 7-table Entity-Relationship (ER) diagram. Following that, in November 2026, I completed an Advanced Database Management Systems lab project where I implemented a hospital Role-Based Access Control (HospitalRBAC_DB) system directly in SQL Server. 
+
+## Global Ambitions: Europe and Japan
+I am actively planning my post-graduation trajectory. I am researching European Master's degree programs in Computer Science and software engineering. My goal is to study in Europe and secure a Werkstudent (working student) opportunity to gain international industry experience.
+
+Simultaneously, I am exploring the technology sector in Japan. I am independently studying the Japanese language to prepare for future career opportunities there. I am specifically looking at pathways in cybersecurity, DevOps, and cloud engineering for a potential relocation to Japan once my foundational studies are complete.

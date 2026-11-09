@@ -1,0 +1,9 @@
+# CPU-only PyTorch (the default Linux wheel bundles CUDA and is ~2 GB too big for Streamlit Cloud)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.15.0+cpu
+streamlit==1.67.0
+pandas==3.1.1
+rank_bm25==0.2.2
+sentence-transformers==6.2.0
+numpy==2.5.4
+google-genai==3.0.0

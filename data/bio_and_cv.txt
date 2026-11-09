@@ -1,0 +1,25 @@
+# Abdullah Mughal - Bio & Curriculum Vitae
+
+I am a motivated Computer Science undergraduate currently in my 6th semester, pursuing my Bachelor of Science (BS CS) at the University of Management and Technology (UMT) Sialkot, with an expected graduation in 2027 and a current CGPA of 3.3. My focus lies in AI-assisted development ("vibe coding"), mobile applications, and cybersecurity. I am currently seeking a challenging internship opportunity to apply my programming, AI, and security skills in a dynamic professional environment.
+
+## Professional Experience & Freelancing
+* **Freelance Video Editor & Developer (Fiverr Level 1 Seller):** I have successfully built a strong freelance business, managing over 100 client relationships and maintaining excellent communication with 100+ positive reviews. I specialize in editing high-engagement short and long-form football videos utilizing Wondershare Filmora. Additionally, I design automated AI workflows (LangChain, n8n) and RAG pipelines.
+* **Technical Operations & Digital Marketing:** I manage the digital presence, inventory cataloging, and technical operations for Ahmad Sanitary Store in Gujranwala, my family's business.
+* **Regional Brand Ambassador (DataCrumbs ChangeMakers):** I coordinate academic events and technical workshops at UMT Sialkot alongside the Computer Science Society.
+
+## Key Projects
+* **Nemesis (Automated Penetration Testing Tool):** I engineered an automated pentesting utility designed to streamline security assessments and identify vulnerabilities efficiently.
+* **Zenith (Gamified Personal Development App):** I designed and developed a mobile application focused on gamifying personal development and daily tasks to improve user engagement and productivity.
+* **Campus Area Network (CAN) Simulation:** I architected and configured a comprehensive Campus Area Network using Cisco technologies to ensure robust, secure, and scalable local network connectivity.
+* **ERPify & Ahmad Sanitary Store POS:** Developing an AI-assisted SaaS ERP with Next.js/PostgreSQL, and built a custom desktop inventory system using Electron and SQLite.
+
+## Technical & Creative Skills
+* **Programming Languages & AI Tools:** Python, React Native, Supabase, Antigravity, and AI-assisted coding (Vibe Coding).
+* **Networking & Security:** Cybersecurity principles, Penetration Testing, and Cisco Network Configuration.
+* **Creative Software:** Wondershare Filmora, Adobe Premiere Pro.
+* **Soft Skills:** Client Communication, Project Management, and Independent Freelancing.
+
+## Certifications & Awards
+* **3rd Position:** Vibe Coding Hackathon at the University of Management and Technology.
+* **Google Cybersecurity Professional Certificate:** Earned via Coursera.
+* **Premiere Pro Quick Start Beginner Certification.**

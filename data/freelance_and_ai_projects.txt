@@ -1,0 +1,10 @@
+# Freelance Work and AI Project Portfolio
+
+## AI Automation and Freelance Development
+As a freelance software developer and AI automation specialist on Fiverr, I focus on building intelligent, scalable systems. My core offerings revolve around creating advanced workflows using LangChain, LangGraph, n8n, and Retrieval-Augmented Generation (RAG) pipelines. I also have a strong interest in Agentic AI frameworks, actively exploring Anthropic's Model Context Protocol (FastMCP) for autonomous multi-agent task execution. 
+
+## Major Software Projects
+*   **ERPify:** I am currently developing ERPify, an AI-assisted multi-tenant SaaS ERP and POS platform specifically tailored for Pakistani small and medium enterprises. The tech stack includes Next.js, PostgreSQL, and the Vercel AI SDK.
+*   **Mobile Application Development (React Native):** I am building two major mobile apps using React Native, Expo Router, and TypeScript. The first is **Kollab**, a peer-to-peer student networking and project collaboration app that integrates Supabase, PostgreSQL RLS, and Stripe for payments. The second is **Zenith**, a gamified habit-tracking and productivity app that features RPG-style character evolution.
+*   **Ahmad Sanitary Store POS:** I built a custom desktop Point of Sale and inventory management software for my family's business using Electron, React, Tailwind CSS, and SQLite.
+*   **Maxing Enterprises:** For this leather apparel exporter, I created a complete technical B2B web blueprint, an SEO strategy, and produced showcase videos.

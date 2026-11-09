@@ -1,0 +1,52 @@
+# Personal FAQ
+
+**Q: What is your primary development setup?**
+A: I run a Windows desktop setup with an AMD Ryzen 5 5600 processor, an NVIDIA GeForce GTX 1070 GPU, and 16 GB of RAM. I do most of my coding in Visual Studio Code using local Python virtual environments.
+
+**Q: How do you handle AI models locally?**
+A: I keep my models on a dedicated secondary drive (`D:\LLM_Models`). I deploy local open-source models, specifically Gemma 4, using LM Studio and Ollama connected via local OpenAI-compatible REST API endpoints.
+
+**Q: What games do you play competitively?**
+A: I mostly play tactical first-person shooters on PC, specifically Team Fortress 2 and Counter-Strike 2. 
+
+**Q: What are your CS2 settings?**
+A: I play CS2 on a 4:3 stretched resolution at 1440x1080. It helps maximize visual clarity and smoothness on my 200 Hz display.
+
+**Q: What kind of anime do you watch?**
+A: I'm a big fan of Great Teacher Onizuka (Eikichi Onizuka is a classic) and Jujutsu Kaisen, especially the dynamic with Ryomen Sukuna. 
+
+**Q: What are your post-graduation plans?**
+A: I am currently researching European Master's degree programs in Computer Science and looking into Werkstudent opportunities. I'm also independently studying Japanese and exploring pathways in cybersecurity, DevOps, and cloud engineering for a potential relocation to Japan.
+
+**Q: What kind of music do you listen to?**
+A: I mostly listen to Punjabi music. Karan Aujla is definitely one of my favorite artists right now.
+
+**Q: What was your Digital Forensics lab project about?**
+A: I utilized FTK Imager for USB drive acquisition, hash verification, and evidence logging.
+
+**Q: What football teams do you follow?**
+A: I follow European association football closely, tracking the Premier League, UEFA Champions League, and La Liga. I mainly support FC Barcelona and Real Madrid, and I always keep an eye on Erling Haaland. 
+
+**Q: What do you do outside of coding?**
+A: I enjoy customizing digital Steam profiles with bespoke vector artwork, animated showcases and custom backgrounds. I also do graphic design, vector tracing in Adobe Illustrator, and edit short-form video content and football highlights.
+
+**Q: When you're pulling a late night, what is your go-to food delivery order?**
+A: I'm actually not a code-loving student; I'm a late-night gamer! My go-to food delivery order is a burger from Mr. Foodie, and sometimes I'll get lasagna from Glorious Pizza.
+
+**Q: Which university project challenged you the most and why?**
+A: The most challenging one was definitely the FocusSpace project. Just one day before the deadline, we pivoted and changed the project into an AI-assisted website UI checker. Figuring that out required a sudden, intense thought process, which made it very challenging, even if it wasn't technically the absolute hardest thing I've ever coded.
+
+**Q: Who are your usual go-to classmates for collaborations?**
+A: I usually team up with the same small group of classmates for projects. I'd rather not name them here without their permission.
+
+**Q: What is a specific Steam badge or digital profile showcase you are particularly proud of?**
+A: Honestly, I'm proud of none of the badges. On a Steam profile, the main things I actually like and focus my time on are the custom artwork showcases and backgrounds, not the achievements or badges.
+
+**Q: Which payment gateways do you rely on for your freelance work?**
+A: I mainly use Payoneer, but honestly, they tax a lot and their deduction fees are really high.
+
+**Q: What was the highlight of your trip to the Lahore Fort (Shahi Qila)?**
+A: The trip itself was good, but our group didn't enter the fortress on time because we completely mismanaged our schedule and spent way too long on VR gaming beforehand. Seeing all the other students enjoying the fortress while we missed out definitely gave me a little pain!
+
+**Q: What is your "hot take" regarding AI and the future of software engineering?**
+A: My thought is that the things we learn become outdated incredibly fast, so we need to stay updated with tech as much as possible. Also, I think there is going to be a really good business for people creating professional AI agents that end up taking other people's jobs XD

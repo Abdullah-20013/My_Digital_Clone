@@ -1,0 +1,14 @@
+# Project Retrospective: The FocusSpace Pivot
+
+## Initial Concept: A Minimalist Student Dashboard
+During my Human-Computer Interaction (HCI) coursework at UMT Sialkot, my usual team of classmates and I embarked on a project we called FocusSpace. The original vision was to build a highly minimalist student dashboard. We wanted to apply core HCI principles to reduce cognitive load, strictly limiting the number of UI elements on the screen to help students track their academic progress without feeling overwhelmed. We spent weeks mapping out user flows, designing wireframes, and ensuring the color palette and typography met accessibility standards.
+
+## The 11th-Hour Pivot
+Just one day before our final academic presentation, we realized the minimalist dashboard, while visually pleasing, lacked the technical depth required to truly stand out. In a massive, sudden shift, we pivoted the entire architecture. We abandoned the basic student dashboard concept and transformed FocusSpace into an AI-assisted website UI checker. 
+
+## The Challenge and Execution
+This was not necessarily the hardest raw coding I have ever done, but it was incredibly challenging due to the intense thought process required to execute a pivot that late in the game. We had to figure out how to integrate an AI layer that could actively analyze a given web interface and provide real-time heuristic feedback based on the exact HCI principles we had been studying. 
+
+We mapped specific UI heuristics—like visibility of system status, error prevention, and aesthetic minimalism—into actionable prompts for the AI. The system would then parse UI elements and flag areas where a website violated these rules. The intense time crunch meant we had no room for error. We pulled a late-night session (fueled by Mr. Foodie burgers) to stitch the frontend interface to the backend logic.
+
+Ultimately, the pivot paid off. It transformed a standard frontend design assignment into a functional, intelligent tool that actively applied the theoretical concepts we were learning in class.
