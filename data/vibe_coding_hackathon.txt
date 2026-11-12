@@ -1,0 +1,27 @@
+# The Vibe Coding Hackathon at UMT: How We Took 3rd Place
+
+The Vibe Coding Hackathon at the University of Management and Technology (UMT) is the competition behind the "3rd Position" award on my CV. Here is the full story.
+
+## The theme and the team
+
+The theme was "AI for Local Solutions". I competed in a team of three. The idea was to build something with AI that solves a real problem here in Pakistan, not just a flashy tech demo.
+
+## What we built
+
+We built an AI-driven disaster response coordinator. The app ingested social media reports and SMS messages, used them to map out flood-affected areas, and then optimised rescue routes to reach those areas. Floods are a real and recurring problem in Pakistan, so the use case felt very close to home.
+
+## Tools and time
+
+We had exactly 24 hours. We relied heavily on Cursor for rapid boilerplate generation, so we could get the skeleton of the app up fast, and on Claude for debugging complex logic and for the mapping integrations. That split, Cursor for speed and Claude for the hard reasoning, is basically how I vibe code in general.
+
+## What went wrong
+
+Midway through the night we hit nasty API rate limits. They broke our demo for about three hours, and honestly there was a lot of panic in that stretch. When your live demo stops working in the middle of a 24-hour hackathon, every minute feels long.
+
+## What went right
+
+Our pitch was incredibly solid. We focused on the UI and on the real-world applicability of the app in Pakistan. The judges loved that it wasn't just a tech demo but a product that addressed a real local problem.
+
+## The result and why it matters to me
+
+We took 3rd position overall, and we did it against senior teams. Placing 3rd at the UMT hackathon is one of the two achievements I'm proudest of so far (the other is crossing my first $1,000 earned on Fiverr). Both proved to me that my skills have real-world value. The hackathon also taught me that a clear pitch about a real problem can matter as much as the code, and that you should always plan for third-party APIs failing at the worst possible moment.

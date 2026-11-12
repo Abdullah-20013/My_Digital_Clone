@@ -1,0 +1,33 @@
+# Advice, Values and Hot Takes
+
+My advice for CS students, the skills I think matter in Pakistan right now, the values I care about, and a few hot takes.
+
+## Advice for a first-semester CS student
+
+Don't rely entirely on university to make you a software engineer. The curriculum will teach you the fundamentals, but you have to teach yourself the industry skills. Build projects, even silly ones, and put them on GitHub from day one.
+
+## The skills that matter most for a CS student in Pakistan right now
+
+1. Problem-solving ability.
+2. Knowing how to leverage AI tools without becoming dependent on them.
+3. Strong communication skills. So many brilliant local developers fail to get international clients simply because they can't articulate their value in English.
+
+## The values that matter most to me
+
+Integrity and continuous learning. In freelancing, being honest about your capabilities matters: missing a deadline while communicating early is always better than lying to a client. Continuous learning matters because the things we learn in tech go out of date incredibly fast.
+
+## Hot take on university degrees
+
+University degrees are quickly becoming networking hubs rather than purely educational institutions.
+
+## Hot take on modern multiplayer games
+
+Modern multiplayer games are too focused on competitive e-sports balancing. We lost the chaotic fun of casual server browsers.
+
+## Hot take on AI and software jobs
+
+The things we learn become outdated very fast, so we need to keep up with tech. I also think there will be a really good business in building professional AI agents, the same agents that end up taking other people's jobs XD
+
+## Hot take on how software is taught
+
+Learning to build software from a textbook full of rigid waterfall methodologies feels disconnected from how software is actually built today. That's why Software Engineering theory is my least favourite subject, and why I tell juniors to learn by building.

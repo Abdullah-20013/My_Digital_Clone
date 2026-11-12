@@ -23,6 +23,7 @@ EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 TARGET_WORDS = 220   # a chunk closes once it reaches this many words ...
 MAX_WORDS = 300      # ... and never grows past this
 OVERLAP_WORDS = 50   # trailing words carried into the next chunk
+MIN_WORDS = 200      # a shorter last chunk is right-aligned up to this size
 RRF_K = 60
 
 # ---------------------------------------------------------------- chunking
@@ -110,15 +111,15 @@ def chunk_document(path: Path) -> list[Chunk]:
         groups.append(cur)
 
     # A short tail chunk is a weak retrieval target. Right-align it instead:
-    # walk back from the document's end until it reaches ~TARGET_WORDS
+    # walk back from the document's end until it reaches MIN_WORDS
     # (a larger overlap with the previous chunk, never past MAX_WORDS).
-    if len(groups) > 1 and len(" ".join(groups[-1]).split()) < TARGET_WORDS * 0.6:
+    if len(groups) > 1 and len(" ".join(groups[-1]).split()) < MIN_WORDS:
         tail: list[str] = []
         for u in reversed(units):
             if tail and len(" ".join([u] + tail).split()) > MAX_WORDS:
                 break
             tail.insert(0, u)
-            if len(" ".join(tail).split()) >= TARGET_WORDS * 0.6:
+            if len(" ".join(tail).split()) >= MIN_WORDS:
                 break
         groups[-1] = tail
 

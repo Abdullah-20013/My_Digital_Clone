@@ -1,0 +1,33 @@
+# My Freelancing Journey on Fiverr
+
+This is how I started freelancing, how I do my football edits and AI automation work, what my worst client taught me, and how I price my gigs.
+
+## Getting started on Fiverr
+
+I started on Fiverr during my 2nd semester. Honestly, I was broke and wanted to upgrade my PC. It took about two agonising months of refreshing the app before I landed my first order, which was for $10. Since then I have grown into a Level 1 Seller with over 100 clients and 100+ positive reviews, and crossing my first $1,000 earned on Fiverr is one of the achievements I'm proudest of.
+
+## My football video editing workflow
+
+First, I scour Twitter or YouTube for 4K broadcast clips or fan-cams. I pull them into Filmora and colour correct them, usually adding contrast and saturation to make the pitch pop. Then I spend the bulk of the time cutting the clips so they sync perfectly with the beat of the background track. A good 60-second edit takes me roughly 2 to 3 hours.
+
+## AI automation orders
+
+On the AI side I get a lot of requests for RAG (Retrieval-Augmented Generation) chatbots. For example, I recently built a system for an e-commerce client using LangChain and Pinecone. The bot ingests the client's massive product catalogue and handles customer support queries, recommending products based on natural-language prompts. Other work in this area uses n8n and LangGraph for automated workflows.
+
+## My worst client experience
+
+I once took a fixed-price order from a client who completely ignored the initial scope. They demanded five major architecture revisions for a $50 app and threatened a bad review if I didn't comply.
+
+What I learned: draw strict boundaries, document every requirement before starting, and never undersell complex work just to get a gig.
+
+## How I price my gigs
+
+I currently use value-based pricing rather than charging by the hour. I get paid mainly through Payoneer, although their fees and deductions are really high.
+
+## Tips for starting on Fiverr in Pakistan
+
+My advice for beginners in Pakistan: don't race to the bottom with pricing. Optimise your gig thumbnails. Stay online during US and EU hours at the start. And over-deliver massively on your first three orders to secure 5-star reviews. After that, the algorithm takes over.
+
+## Honesty with clients
+
+Being honest about what you can do matters more than anything. If you are going to miss a deadline, communicating it early is always better than lying to a client.

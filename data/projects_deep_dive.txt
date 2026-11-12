@@ -1,0 +1,51 @@
+# Projects Deep Dive: Nemesis, Zenith, ERPify, the Store POS and the Campus Network
+
+This document goes deeper into the projects listed on my CV: what problem each one solves, how it works, what it is built with, what was hard, and where it stands right now.
+
+## Nemesis: my automated penetration testing tool
+
+The problem Nemesis solves is simple: manual reconnaissance and the first round of vulnerability scanning are tedious and time-consuming for security researchers. Every engagement starts with the same boilerplate phase, so I built Nemesis to automate it.
+
+How it works: you give Nemesis a target IP address or domain. It automatically runs layered nmap scans, starting with fast host discovery and moving step by step into deep service enumeration. It then parses the scan output and cross-references the open ports and detected services against known CVE databases, so it can highlight the immediate attack vectors instead of leaving you with a wall of raw scan results.
+
+The stack: Nemesis is built heavily in Python. It uses standard libraries such as subprocess to run nmap, and custom parsing logic for nmap's XML output. I also use networking libraries like scapy for custom packet crafting.
+
+The hardest part: reliably parsing raw nmap XML output and correlating it with external vulnerability databases without throwing false positives. The logic for handling edge cases, for example when ports drop packets, was honestly a headache.
+
+Status: Nemesis works today as a command-line (CLI) tool. Next I want to add a clean web-based GUI, probably React on the front end with FastAPI on the back end, plus automated reporting that exports findings as a PDF.
+
+## Zenith: the habit RPG app
+
+Zenith turns daily life into an RPG. You create a character and set habits, for example "Drink Water" or "Study for 2 hours". Completing a habit gives you XP. As you collect XP you level up, unlock classes (like Scholar for study habits or Warrior for fitness habits) and earn virtual gear. That is the "character evolution" idea: your character grows as you actually stick to your habits.
+
+The screens: the Dashboard shows your character sprite with health and mana bars; the Quest Log holds your daily habits and to-dos; there is a Skill Tree; and there is a Shop where you spend the gold you earn on rewards.
+
+Status: Zenith is a working prototype built in React Native. It runs on my phone, but I still need to polish the backend database before a public app store release.
+
+## ERPify: an ERP built for Pakistani SMEs
+
+The problem: most Pakistani small and medium enterprises (SMEs) still run on old paper ledgers or on cracked, outdated software that does not understand the local context. ERPify handles invoices, inventory and GST/FBR tax compliance natively, and, importantly, it offers an Urdu interface so local shop staff can actually use it.
+
+The AI part: I integrated a predictive model that analyses past sales data and alerts the owner before they run out of fast-moving stock. It adjusts for seasonal spikes, like the rush before Eid.
+
+The stack is Next.js and PostgreSQL, designed as a multi-tenant SaaS ERP and POS platform.
+
+Status: the MVP is deployed locally with a couple of beta testers. I am still iterating on the FBR tax reporting modules.
+
+## Ahmad Sanitary Store POS
+
+Background: before I built this, my family's store, Ahmad Sanitary Store in Gujranwala, used completely manual paper ledgers (khata) for everything. Finding an old bill was a nightmare.
+
+Features: a quick billing interface, automatic stock deduction when something is sold, low-stock alerts, and daily and monthly profit reports. It is a desktop app built with Electron, React, Tailwind CSS and SQLite.
+
+Status: yes, it is used every day at the store, and it has become critical to how the store operates.
+
+What I learned: real-world users do unpredictable things. Building this taught me how to handle extreme edge cases, how to design an intuitive UI that needs no training, and why regular local database backups matter so much.
+
+## Campus Area Network (CAN) simulation in Cisco Packet Tracer
+
+What I built: a simulated campus network spanning five separate buildings: Admin, the CS Department, Engineering, the Library and the Hostels.
+
+The details: I implemented inter-VLAN routing so that departments are isolated from each other but can still communicate through specific gateways. I used OSPF as the primary routing protocol. I also set up DHCP, DNS and basic ACLs (Access Control Lists) for security.
+
+Environment: the whole network was built and tested in Cisco Packet Tracer, not on real hardware.

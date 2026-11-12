@@ -1,0 +1,35 @@
+# How I Work, Study and Vibe Code
+
+This is how my normal days look, how I use AI tools when I code, how I study and learn, and how I deal with deadlines.
+
+## My normal routine
+
+Mornings are usually spent at university attending lectures. When I get back I rest a bit. Late afternoons and evenings are for freelancing work and coding my personal projects. Late nights, after 11 PM, are strictly reserved for gaming with friends or watching football.
+
+## My vibe coding process and AI tools
+
+Cursor is my primary IDE because of its inline AI capabilities. Claude is my go-to for complex architecture decisions and for debugging tough logic errors. I use ChatGPT mostly for brainstorming and for writing first drafts of documentation. For local experiments I also run open-source models through LM Studio and Ollama.
+
+What I never let the AI do: I never let AI design the core database schema or write security logic without manual oversight. In my experience that always leads to technical debt. AI is great for speed and boilerplate, but the foundations and anything security-related get my own eyes on every line.
+
+## How I study for exams
+
+For university exams I am, honestly, a chronic last-minute hyper-focuser. I compile past papers and my notes, and then I study intensely in the few days before the exam.
+
+## How I learn a new technology
+
+For learning new tech I skip the tutorials and immediately try to build a micro-project with it. Breaking things and fixing them teaches me faster than watching someone else code.
+
+## Deadlines and procrastination
+
+The Pomodoro technique helps when I can actually force myself to start. Otherwise, I rely on the pressure of an approaching deadline to get into a flow state. My pivot on FocusSpace actually came out of trying to fix my own procrastination problem. (FocusSpace is the university project where, one day before the deadline, my group pivoted to an AI-assisted website UI checker.)
+
+## Favourite and least favourite university subjects
+
+My favourite subject is Data Structures and Algorithms. It felt like solving puzzles, and it actually made me a better programmer.
+
+My least favourite is Software Engineering theory. Ironically, learning how to build software from a textbook full of rigid waterfall methodologies felt incredibly disconnected from how software is actually built today.
+
+## Working on too much at once
+
+My biggest weakness is time management and avoiding burnout. I tend to take on too many freelance projects while juggling university, which leads to a few intense crunch weeks. I'm actively working on saying "no" to things.

@@ -6,7 +6,7 @@
 
 A Streamlit chatbot that answers questions as me using a hybrid Retrieval-Augmented Generation pipeline. It is hosted on **Streamlit Community Cloud** (free). Hugging Face Spaces now require a paid plan for Gradio and Docker apps, and a free Static Space can't keep an API key secret.
 
-1. **Chunk** (`rag.py`): each document is split on paragraph boundaries and packed into ~200–300 word chunks. Each new chunk repeats up to 50 words from the end of the previous one (overlap). A short last chunk is right-aligned so it reaches back to ~130+ words. Every chunk keeps its file name and an ID such as `personal_faq#1`.
+1. **Chunk** (`rag.py`): each document is split on paragraph boundaries and packed into ~200–300 word chunks. Each new chunk repeats up to 50 words from the end of the previous one (overlap). A short last chunk is right-aligned so it reaches back to at least 200 words. Every chunk keeps its file name and an ID such as `personal_faq#1`.
 2. **Index twice**: BM25 (`rank_bm25.BM25Okapi`) over lower-cased, stop-word-filtered tokens, and `all-MiniLM-L6-v2` sentence embeddings (sentence-transformers). Embeddings are precomputed once by `build_index.py` and saved in `embeddings.npy`. `chunks.json` stores a fingerprint of `data/`, so the app only re-embeds if the documents change.
 3. **Retrieve**: BM25 scores, or cosine similarity (a numpy dot product of L2-normalised vectors; no vector database).
 4. **Fuse** with **Reciprocal Rank Fusion**: `score(d) = Σ 1 / (60 + rank_r(d))` over the BM25 and dense rankings. Chunks with a BM25 score of 0 share no word with the question, so they get no BM25 vote.
@@ -24,7 +24,7 @@ A Streamlit chatbot that answers questions as me using a hybrid Retrieval-Augmen
 | `eval.py` | Report questions and hit@1 / hit@3 / MRR for each mode |
 | `requirements.txt` | Pinned packages (CPU-only PyTorch to fit Streamlit Cloud) |
 | `.streamlit/secrets.toml.example` | Template for the secrets file |
-| `data/` | My knowledge base (6 documents) |
+| `data/` | My knowledge base (11 documents) |
 
 ---
 
@@ -34,14 +34,19 @@ A Streamlit chatbot that answers questions as me using a hybrid Retrieval-Augmen
 
 | Document | Type | What it covers |
 |---|---|---|
-| `bio_and_cv.txt` | Factual (CV) | Degree at UMT Sialkot, Fiverr freelancing, projects (Nemesis, Zenith, ERPify, CAN), skills, certificates |
-| `freelance_and_ai_projects.txt` | Factual / projects | AI automation work (LangChain, n8n, RAG, FastMCP), ERPify, Kollab, Zenith, POS, Maxing Enterprises |
-| `academics_and_future_plans.txt` | Factual / plans | Database and forensics coursework, plans for a Master's in Europe and a career in Japan |
-| `opinions_and_hobbies.txt` | Personality / opinions | Steam profile art, CS2 settings, anime, Punjabi music, football |
+| `bio_and_cv.txt` | Factual (CV) | 7th semester BS CS at UMT Sialkot, Fiverr freelancing, projects, skills, certificates, 3rd place at the hackathon |
+| `projects_deep_dive.txt` | Long-form / projects | How Nemesis, Zenith, ERPify, the store POS and the Cisco campus network work, their stacks, hard parts and status |
+| `vibe_coding_hackathon.txt` | Long-form story | The UMT Vibe Coding Hackathon: theme, the flood-response app, 24 hours, rate-limit panic, 3rd place |
 | `long_form_project.txt` | Long-form write-up | Retrospective on the FocusSpace last-minute pivot |
-| `personal_faq.txt` | First-person FAQ | Setup, games, music, plans, food, payments, trips, hot takes, in my own voice |
+| `freelance_and_ai_projects.txt` | Factual / projects | AI automation work (LangChain, n8n, RAG, FastMCP), ERPify, Kollab, Zenith, POS, Maxing Enterprises |
+| `freelancing_journey.txt` | Experience | Starting on Fiverr, the football-edit workflow, a RAG chatbot order, the worst client, pricing tips |
+| `how_i_work.txt` | Habits / process | Daily routine, vibe-coding tools and limits, exam study, learning, procrastination, favourite subjects |
+| `academics_and_future_plans.txt` | Factual / plans | Database and forensics coursework, plans for a Master's in Europe and a career in Japan |
+| `advice_and_values.txt` | Opinions / values | Advice for juniors, skills that matter in Pakistan, values, hot takes |
+| `opinions_and_hobbies.txt` | Personality / opinions | Steam profile art, CS2 settings, anime, Punjabi music, football |
+| `personal_faq.txt` | First-person FAQ (30 Qs) | Setup, games, music, plans, semester, Japanese level, achievements, weakness, dream job, hot takes |
 
-I chose these because together they cover the questions people actually ask me: *what do you do* (CV, projects), *what are you like* (opinions, FAQ) and *tell me a story* (the FocusSpace write-up). They also give each retriever something to win on. There are many **rare exact terms** (DataCrumbs, Kollab, HospitalRBAC_DB, FTK Imager, Werkstudent) that only BM25 can match reliably, and plain **descriptive passages** (the pivot story, future plans) that dense search can match from a paraphrase. The documents give **11 chunks** of 165–286 words. No phone numbers, addresses, IDs or account details are included.
+11 documents, about **5,000 words** (roughly 10–12 pages). I chose them so they cover the questions people actually ask me: *what do you do* (CV, project deep dive, freelancing), *how do you work and think* (habits, advice, opinions, FAQ) and *tell me a story* (the hackathon and FocusSpace write-ups). They also give each retriever something to win on. There are many **rare exact terms** (DataCrumbs, Kollab, HospitalRBAC_DB, FTK Imager, OSPF, Werkstudent, Demoman) that only BM25 can match reliably, and plain **descriptive passages** (the pivot story, procrastination habits, future plans) that dense search can match from a paraphrase. The documents give **26 chunks** of 200–292 words. The only exception is `academics_and_future_plans`, a single 181-word chunk because the whole document is that short. No phone numbers, addresses, IDs, account details or names of family, friends or classmates are included.
 
 ## 2. Five test questions across the three modes (top-3, k = 3)
 
@@ -49,38 +54,39 @@ I chose these because together they cover the questions people actually ask me: 
 
 | # | Question | BM25 result | Dense result | Hybrid (RRF) result | Best mode and why |
 |---|---|---|---|---|---|
-| Q1 | **Rare keyword:** "What is DataCrumbs?" | ✓ `bio_and_cv#0` (1.67), nothing else matches | ✗ `long_form_project#1` (0.16), `bio_and_cv#1`, `long_form_project#0`. The answer is only **#9** | ✓ `bio_and_cv#0` first (0.031), then dense's picks | **BM25 / Hybrid.** "DataCrumbs" is a made-up brand name; MiniLM has no meaning for it, so its vector is near-random, while BM25's IDF weight on a word that appears once is huge. RRF keeps BM25's #1. |
-| Q2 | **Paraphrase, zero shared words:** "Describe a nerve-wracking last-minute change of direction on a group task" | ✗ `personal_faq#2` (2.94, matched "group" from the Lahore Fort trip and "group of classmates"), `freelance_and_ai_projects#0` ("task" from "task execution") | ✓ `long_form_project#1` (0.244), ✓ `long_form_project#0` (0.238), ✓ `personal_faq#1` (FocusSpace FAQ) | `personal_faq#2`, `freelance#0`, ✓ `long_form_project#1` (#3) | **Dense.** The answer says "pivot", "11th hour", "one day before"; the question says "change of direction", "last-minute". No word overlaps, so BM25 latched onto incidental words. Dense got all three relevant chunks. Hybrid still found the answer, but BM25's noise pushed it to #3. |
-| Q3 | **Synonym + spelling:** "Who is your favourite singer?" | ✗ **nothing**: my notes say "favorite *artist*", the question says "favourite *singer*" | ✓ `personal_faq#1` (0.113), `personal_faq#2`, ✓ `opinions_and_hobbies#1` | Same as dense (BM25 casts no votes) | **Dense / Hybrid.** British vs American spelling plus singer vs artist means zero token overlap; embeddings treat both pairs as near-synonyms. Because zero-score chunks get no BM25 vote, hybrid falls back to dense instead of failing. |
-| Q4 | **Rare project name:** "Tell me about Kollab" | ✓ `freelance_and_ai_projects#0` (1.88) | `bio_and_cv#1` (0.167), `personal_faq#0` (0.146), ✓ `freelance#0` (0.144, **#3**) | ✓ `freelance_and_ai_projects#0` first (0.032) | **Hybrid.** Dense ranked three generic "about me" chunks almost equally (0.14–0.17). BM25's single confident match plus dense's #3 gives the right chunk the highest fused score. |
-| Q5 | **Opinion:** "Is AI going to make developers unemployed?" | ✓ `personal_faq#2` (2.68), `freelance#0`, `bio_and_cv#0` | ✗ `freelance_and_ai_projects#0` (0.356), `long_form#1`, `bio_and_cv#1`. The answer is only **#7** (0.171) | ✗ `freelance#0` (0.0325), `long_form#1`, `bio_and_cv#1`. The answer is **#4** (0.0313) | **BM25.** "AI" and "jobs" sit in the hot-take answer, so BM25 ranks it #1. Dense prefers chunks that are *about* AI and work but hold no opinion. RRF rewards chunks that are middling in both lists over one that is #1 in one and #7 in the other, so hybrid loses it (see the failure case). |
+| Q1 | **Rare keyword:** "What is DataCrumbs?" | ✓ `bio_and_cv#0` (1.97), ✓ `bio_and_cv#1` (1.89), nothing else matches | ✗ `projects_deep_dive#0` (0.207), `projects_deep_dive#2`, `projects_deep_dive#3`. The answer is only **#15** | ✓ `bio_and_cv#1` (0.029), ✓ `bio_and_cv#0`, then dense's #1 | **BM25 / Hybrid.** "DataCrumbs" is a made-up brand name; MiniLM has no meaning for it, so its vector is near-random, while BM25's IDF weight on a word found in one document is huge. RRF keeps BM25's picks on top. |
+| Q2 | **Paraphrase, zero shared words:** "Describe a nerve-wracking last-minute change of direction on a group task" | ✗ `how_i_work#0` (4.76), `personal_faq#5`, `freelance_and_ai_projects#0`: incidental words like "group" and "task". The answer is **#4** | `vibe_coding_hackathon#1` (0.307), `vibe_coding_hackathon#0`, ✓ `long_form_project#0` (0.238, **#3**) | ✗ `how_i_work#0` (0.032), `vibe_coding_hackathon#1`, `vibe_coding_hackathon#0`. The answer is **#4** | **Dense.** The answer says "pivot", "11th hour", "one day before"; the question says "change of direction", "last-minute". No word overlaps, so BM25 latched onto incidental words. Dense found the FocusSpace story; its top 2 are the hackathon panic story, a near miss in meaning. BM25's noise pushed hybrid's answer to #4. |
+| Q3 | **Paraphrase of a habit:** "How do you deal with putting things off?" | `how_i_work#0` (2.85) only; the answer chunk has **no BM25 match** (it says "procrastination") | ✓ `how_i_work#1` (0.209, **#1**), `personal_faq#2`, `how_i_work#0` | `how_i_work#0` (0.032), ✓ `how_i_work#1` (**#2**), `personal_faq#2` | **Dense.** "Putting things off" and "procrastination" share no token, but MiniLM puts them close together. Hybrid keeps the answer in the top 2 because chunks with a zero BM25 score get no BM25 vote, so dense's #1 is not buried by BM25's noise. |
+| Q4 | **Rare project name:** "Tell me about Kollab" | ✓ `freelance_and_ai_projects#0` (2.76), nothing else matches | `bio_and_cv#1` (0.225), `projects_deep_dive#1`, `academics_and_future_plans#0`. The answer is **#6** | ✓ `freelance_and_ai_projects#0` first (0.032) | **BM25 / Hybrid.** Dense spreads "tell me about [a project]" over every project-like chunk. BM25's single confident match on the rare name wins the fusion. |
+| Q5 | **Opinion:** "Is AI going to make developers unemployed?" | ✓ `advice_and_values#0` (5.40), `freelancing_journey#0`, ✓ `advice_and_values#1` | ✓ `personal_faq#3` (0.399), `freelance_and_ai_projects#0`, ✓ `advice_and_values#1` | ✓ `personal_faq#3` (0.032), ✓ `advice_and_values#1`, `freelancing_journey#0` | **All three, Hybrid best.** Before the KB expansion this was a hybrid miss: the hot take sat in one crowded FAQ chunk. Now it is also in the advice document under a "Hot take on AI and software jobs" heading, so both retrievers rank it high and RRF puts two relevant chunks in the top 2. |
 
-**Over a hand-labelled set of 23 questions** (`python eval.py`; a chunk counts as relevant if it contains the answer phrase):
+**Over a hand-labelled set of 38 questions** (`python eval.py`; a chunk counts as relevant if it contains the answer phrase):
 
 | Mode | hit@1 | hit@3 | MRR |
 |---|---|---|---|
-| BM25 only | **0.87** | **0.91** | **0.90** |
-| Dense only | 0.57 | 0.78 | 0.69 |
-| **Hybrid (RRF)** | 0.78 | **0.91** | 0.86 |
+| BM25 only | 0.79 | 0.89 | 0.86 |
+| Dense only | 0.58 | 0.76 | 0.70 |
+| **Hybrid (RRF)** | **0.82** | **0.92** | **0.88** |
 
-BM25 scores best on these numbers because my notes are full of exact names and the eval questions often reuse them. But when BM25 misses, it misses completely: for Q2 and Q3 it returns nothing useful, so the clone would have nothing to answer from. Hybrid ties BM25 on hit@3 (21 of 23) and its misses are different: the answer is still at #4–#5, not absent. Dense alone misses rare names (Q1). Real visitors paraphrase far more than my test set does, so I kept **Hybrid as the default mode**, and the next step (section 4) targets its two misses.
+With the bigger KB, hybrid is now best on all three metrics (35 of 38 at hit@3). BM25 is still strong because my notes are full of exact names, but when it misses it misses completely: for Q3 and the failure case below, the answer chunk has no BM25 match at all. Dense alone misses rare names (Q1, Q4) but rescues paraphrases (Q2, Q3). Hybrid inherits most of both, so it is the **default mode** in the app. Its three misses are Q2, the failure case below, and "What does the AI in ERPify do?", where the answer paragraph landed in a different chunk from the ERPify heading.
 
-**Fusion choice.** I used RRF because it only needs ranks. BM25 scores (0–9 here) and cosines (−0.1–0.4) are on unrelated scales. The alternative is a weighted score `α·dense + (1−α)·bm25` after **min-max normalising** each to [0, 1]. That uses how confident each retriever is, not just the order, but it needs α to be tuned. Min-max is also fragile with only 11 chunks: one outlier stretches the whole range.
+**Fusion choice.** I used RRF because it only needs ranks. BM25 scores (0–11 here) and cosines (−0.1–0.55) are on unrelated scales. The alternative is a weighted score `α·dense + (1−α)·bm25` after **min-max normalising** each to [0, 1]. That uses how confident each retriever is, not just the order, but α has to be tuned, and min-max is fragile with only 26 chunks: one outlier stretches the whole range.
 
 ## 3. Failure case
 
-**Question:** "What do you think will happen to programming jobs because of AI?" (one of the two hybrid misses in the eval set; Q5 is the other)
+**Question:** "Who is your favourite singer?" (all three modes miss it)
 
-**What happened:** my hot take ("people creating professional AI agents that end up taking other people's jobs XD") is in `personal_faq#2`, BM25 ranks it **#1** (4.79), but dense ranks it **#9** (cosine 0.155) and hybrid only **#5**. With the app's default k = 4 the LLM never sees it. All it gets is my CV and AI-automation project descriptions, so the best it can do is a weak answer about what I build, or "I don't have that in my notes", even though the opinion *is* in my notes.
+**What happened:** the answer ("Karan Aujla is definitely one of my favorite artists") is in `personal_faq#1` and `opinions_and_hobbies#1`. BM25 gives both a score of **0** and ranks `how_i_work#1` first (3.06). Dense also puts `how_i_work#1` first, with a cosine of only 0.120; the FAQ answer is **#4** (0.038). Hybrid ranks the answer **#6**, so with the app's default k = 4 the LLM never sees it and replies "I don't have that in my notes", even though the answer *is* in my notes.
 
-**Why:** two things combine.
+**Why:** three things combine, and one of them was caused by growing the KB.
 
-1. **Chunk dilution.** `personal_faq#2` is a 241-word chunk that holds five unrelated Q&As: classmates, Steam badges, Payoneer, the Lahore Fort trip, and the AI hot take. Its embedding is an average of all five topics, so the AI opinion is only about a fifth of the vector. `bio_and_cv#1` and `freelance_and_ai_projects#0` are *entirely* about AI and software work, so they win on cosine even though they contain no opinion. (When I replaced my classmates' names with a privacy note, this chunk gained another off-topic sentence and its dense rank dropped from #5 to #9.)
-2. **RRF flattens confidence.** RRF only looks at ranks. A BM25 #1 + dense #9 gives 1/61 + 1/69 = 0.0309, which is less than a chunk ranked #3 in both (1/63 + 1/63 = 0.0317). BM25's score of 4.79 here is very confident, but RRF can't see scores, so one confident retriever is outvoted by two lukewarm ones.
+1. **Vocabulary mismatch.** My notes say "favorite *artists*" (American spelling) and "music"; the question says "favourite *singer*" (British spelling). After tokenising there is no shared word, so BM25 cannot reach the answer.
+2. **A new lexical distractor.** Before the expansion, the British spelling "favourite" appeared nowhere in my notes, so BM25 cast no votes and hybrid fell back to dense, which ranked the answer #1. The new documents use "favourite" for university subjects, football memories and TF2 classes. BM25 now gives confident scores to those chunks, RRF counts those votes, and the wrong chunks win.
+3. **Weak, diluted dense signal.** Every cosine is ≤ 0.12, close to noise. The music answer is one line inside chunks that also cover anime, Steam art, football and forensics, so its embedding is mostly about other things.
 
 ## 4. Improvement I would make next
 
-**Chunk the FAQ one Q&A per chunk and add a cross-encoder reranker.** FAQ entries are self-contained, so a "one question = one chunk" rule (with the question text included in each chunk) would remove the dilution above. Retrieval would then match a user's question against *my* question wording. After that, re-scoring the hybrid top-10 with a cross-encoder (`cross-encoder/ms-marco-MiniLM-L-6-v2`) would read the question and the chunk together, so it can tell "about AI" apart from "my opinion on AI and jobs". Both can be checked with the same `eval.py` hit@3 numbers. A weighted min-max fusion with α ≈ 0.4 is a cheaper alternative worth comparing, because it keeps BM25's confidence that RRF throws away.
+**Chunk the FAQ one Q&A per chunk, normalise spelling, and add a cross-encoder reranker.** FAQ entries are self-contained, so a "one question = one chunk" rule (with the question text in each chunk) removes the dilution above and lets retrieval match a user's question against *my* question wording. A small normalisation step in the tokenizer (British → American spellings such as favourite → favorite, plus a few synonyms like singer → artist) would let BM25 match the failure case. After that, re-scoring the hybrid top-10 with a cross-encoder (`cross-encoder/ms-marco-MiniLM-L-6-v2`) would read the question and each chunk together, so it can tell "favourite subject" apart from "favourite music". All three can be checked with the same `eval.py` numbers. A weighted min-max fusion with α ≈ 0.4 is a cheaper alternative worth comparing.
 
 ---
 

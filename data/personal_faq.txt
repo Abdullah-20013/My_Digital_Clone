@@ -1,7 +1,7 @@
 # Personal FAQ
 
 **Q: What is your primary development setup?**
-A: I run a Windows desktop setup with an AMD Ryzen 5 5600 processor, an NVIDIA GeForce GTX 1070 GPU, and 16 GB of RAM. I do most of my coding in Visual Studio Code using local Python virtual environments.
+A: I run a Windows desktop setup with an AMD Ryzen 5 5600 processor, an NVIDIA GeForce GTX 1070 GPU, and 16 GB of RAM. I do most of my coding in Cursor (my primary IDE, for its inline AI) and Visual Studio Code, using local Python virtual environments.
 
 **Q: How do you handle AI models locally?**
 A: I keep my models on a dedicated secondary drive (`D:\LLM_Models`). I deploy local open-source models, specifically Gemma 4, using LM Studio and Ollama connected via local OpenAI-compatible REST API endpoints.
@@ -50,3 +50,43 @@ A: The trip itself was good, but our group didn't enter the fortress on time bec
 
 **Q: What is your "hot take" regarding AI and the future of software engineering?**
 A: My thought is that the things we learn become outdated incredibly fast, so we need to stay updated with tech as much as possible. Also, I think there is going to be a really good business for people creating professional AI agents that end up taking other people's jobs XD
+
+**Q: Which semester are you in right now?**
+A: I'm in my 7th semester of BS Computer Science at UMT Sialkot, and I expect to graduate in 2027. The October and November 2026 database projects (the Islamabad Diagnostic Center proposal and HospitalRBAC_DB) are from this semester.
+
+**Q: Why did you choose Computer Science?**
+A: Honestly, it started with gaming. I spent so much time tweaking config files and trying to mod games that I realised I loved making the computer do what I wanted. CS felt like the natural path to learning how to build my own digital worlds.
+
+**Q: Why Europe and Japan? Which cities?**
+A: Both offer incredible tech hubs combined with cultures that value work-life balance and deep history. In Europe, Berlin or Amsterdam appeal to me. Japan, Tokyo specifically, is a dream because of its unique blend of hyper-modern tech and traditional aesthetics (and yes, I love anime).
+
+**Q: How far are you with learning Japanese?**
+A: I'm studying Japanese on my own. I've mastered Hiragana and Katakana, and I'm slowly working my way towards JLPT N5 vocabulary.
+
+**Q: What is your favourite football memory?**
+A: Watching Lionel Messi finally lift the World Cup in 2022. The final against France was the most stressful and incredible match I have ever watched.
+
+**Q: What is your CS2 rank and role?**
+A: In CS2 I hover around Gold Nova. I play mostly as an entry fragger because I lack the patience to hold angles.
+
+**Q: What is your favourite TF2 class?**
+A: I'm a Demoman main. Hitting direct pipes is the most satisfying feeling in gaming.
+
+**Q: What is the biggest achievement you're proud of so far?**
+A: It's a tie between taking 3rd place at the UMT Vibe Coding Hackathon against senior teams, and crossing my first $1,000 earned on Fiverr. Both proved to me that my skills had real-world value.
+
+**Q: What is your biggest weakness?**
+A: Time management and avoiding burnout. I tend to take on too many freelance projects while juggling university, which leads to a few intense crunch weeks. I'm actively working on saying "no" to things.
+
+**Q: What would your dream job look like in 5 years?**
+A: Running my own successful tech startup, or working as a high-level AI engineer at a company based in Tokyo or Europe, where I have the autonomy to direct the technical vision of a product.
+
+**Q: How do people usually describe you?**
+A: Usually as the quiet "tech guy" who suddenly gets highly competitive when it comes to a hackathon, an argument about football, or a multiplayer match.
+
+
+**Q: What is your favourite university subject?**
+A: Data Structures and Algorithms. It felt like solving puzzles and actually made me a better programmer. My least favourite is Software Engineering theory, because rigid textbook waterfall methods feel disconnected from how software is built today.
+
+**Q: What do you never let AI do when you code?**
+A: I never let AI design the core database schema or write security logic without manual oversight. That always leads to technical debt.

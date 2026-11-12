@@ -9,7 +9,8 @@ from rag import load_retriever
 MODES = ["bm25", "dense", "hybrid"]
 
 # (question, answer phrase). A chunk counts as relevant ("gold") when it
-# contains the phrase, so overlapping chunks are labelled automatically.
+# contains the phrase (or any of several phrases separated by "|"), so
+# overlapping chunks are labelled automatically.
 REPORT_QUESTIONS = [
     # Q1 exact rare keyword: BM25 should win, dense has never seen the word
     ("What is DataCrumbs?", "DataCrumbs"),
@@ -26,12 +27,12 @@ REPORT_QUESTIONS = [
 EXTRA_QUESTIONS = [
     ("Which payment gateway do you use for freelancing?", "Payoneer"),
     ("What's your GPU?", "GTX 1070"),
-    ("What is Nemesis?", "Nemesis (Automated Penetration"),
+    ("What is Nemesis?", "automated penetration"),
     ("What resolution do you play CS2 on?", "1440x1080"),
     ("Where do you want to live and work after you finish your degree?", "Werkstudent"),
     ("Which tool did you use for USB evidence acquisition?", "FTK Imager"),
     ("What did you build for the hardware shop your family runs?", "Electron"),
-    ("Tell me about the app for tracking habits like a video game character", "RPG-style"),
+    ("Tell me about the app for tracking habits like a video game character", "RPG-style|turns daily life into an RPG"),
     ("What awards have you won?", "3rd Position"),
     ("Which anime villain do you like?", "Sukuna"),
     ("What did you do in the database course with role-based access?", "HospitalRBAC_DB"),
@@ -42,6 +43,22 @@ EXTRA_QUESTIONS = [
     ("What is Kollab?", "peer-to-peer student networking"),
     ("Which football club do you support?", "FC Barcelona"),
     ("What certifications do you hold?", "Google Cybersecurity Professional"),
+    # added with the expanded KB (projects, hackathon, work habits, freelancing, FAQ)
+    ("What routing protocol did you use in the campus network?", "OSPF"),
+    ("How long did the hackathon last?", "exactly 24 hours"),
+    ("What did you build at the hackathon?", "disaster response coordinator"),
+    ("How much was your first Fiverr order?", "first order, which was for $10"),
+    ("How long does a football edit take you?", "2 to 3 hours"),
+    ("What is your CS2 rank?", "Gold Nova"),
+    ("Which TF2 class do you main?", "Demoman"),
+    ("What advice would you give a new CS student?", "GitHub from day one"),
+    ("How do you deal with putting things off?", "Pomodoro"),
+    ("What does the AI in ERPify do?", "predictive model"),
+    ("Which semester are you in?", "7th semester"),
+    ("Which European cities appeal to you?", "Berlin"),
+    ("Has a client ever kept expanding the scope of a cheap order?", "five major architecture revisions"),
+    ("How good is your Japanese?", "Katakana"),
+    ("Which subject did you enjoy most at university?", "Data Structures and Algorithms"),
 ]
 
 OUT_OF_SCOPE = [
@@ -58,7 +75,8 @@ def main():
 
     print("=" * 80, "\nREPORT QUESTIONS (top-3 per mode)\n" + "=" * 80)
     def gold_of(phrase):
-        return {c.chunk_id for c in r.chunks if phrase.lower() in c.text.lower()}
+        alts = [a.lower() for a in phrase.split("|")]
+        return {c.chunk_id for c in r.chunks if any(a in c.text.lower() for a in alts)}
 
     for q, phrase in REPORT_QUESTIONS:
         gold = gold_of(phrase)
